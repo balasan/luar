@@ -1,0 +1,27 @@
+{
+  "name": "simple-template",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot",
+    "build": "webpack --progress --colors"
+  },
+  "dependencies": {
+    "glsl-combine-smooth": "^1.0.0",
+    "glsl-raytrace": "^1.0.0",
+    "glsl-sdf-ops": "0.0.3",
+    "glsl-smooth-min": "^1.0.0",
+    "glsl-specular-blinn-phong": "^1.0.1",
+    "glsl-specular-phong": "^1.0.0",
+    "glsl-turntable-camera": "^1.0.0",
+    "glslify-loader": "^1.0.2",
+    "install": "^0.8.1",
+    "npm": "^3.9.2",
+    "raw-loader": "^0.5.1",
+    "three": "^0.76.1"
+  },
+  "devDependencies": {
+    "glsl-sdf-normal": "^1.0.0",
+    "webpack": "^1.12.9"
+  }
+}
