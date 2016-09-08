@@ -1,4 +1,3 @@
-
 window.THREE = require('three/three.min.js');
 
 var GlView = require('./src/GlView');

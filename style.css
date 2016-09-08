@@ -1,0 +1,87 @@
+html {
+  visibility: visible;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #000000;
+  margin: 0;
+  overflow: hidden;
+}
+
+canvas{
+  position: absolute;
+  top: 0;
+  width: 1440px;
+  height: 742px;
+  z-index: -1;
+}
+
+section {
+  position: absolute;
+}
+
+#hand {
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  background-image: url('img/LHANDTHREE.png');
+  background-size: contain;
+  background-position: 75% top;
+  background-repeat: no-repeat;
+}
+
+#logo {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  background-image: url('img/logo_trans.png');
+  background-position: center center;
+  background-size: 50%;
+  background-repeat: no-repeat;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.window {
+  width: 30vw;
+  height: 16.875vw;
+}
+
+img.window {
+  object-fit: contain;
+}
+
+article {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  top: 0;
+  padding: 1vw;
+}
+
+article p {
+  margin: 0;
+}
+
+
+
+
+
+
+
+
