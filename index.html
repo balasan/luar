@@ -1,26 +1,44 @@
-<!DOCTYPE html>
-<html lang="en" style="visibility: visible;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-    <title>Liquid Vid</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <style>
-      body {
-        font-family: Monospace;
-        background-color: #000000;
-        margin: 0px;
-        overflow: hidden;
-        /*cursor: none;*/
-      }
-      canvas{
-        position:absolute;
-        top:0px;
-        width: 1440px;
-        height: 742px;
-      }
-    </style>
-  <style type="text/css"></style></head>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Luar</title>
+  <link rel='stylesheet', href='style.css'>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
   <script src="bundle.js"></script>
   <body cz-shortcut-listen="true">
+    <section id="hand">
+    </section>
+
+    <section id="logo" class="below">
+      <img src="img/logo_invert_no_outer.svg" />
+    </section>
+
+    <section id="main" class="below">
+      <video autoplay muted loop class="bg">
+        <source src="img/LUAR12.mp4" type="video/mp4">
+      </video>
+
+      <video autoplay muted loop class="window hidden">
+        <source src="img/LUAR28.mp4" type="video/mp4">
+      </video>
+      
+      <img src="img/BODIES-LOGO-LUAR.png" class="window hidden" />
+      <img src="img/DERMA-LOGO-LUAR.png" class="window hidden" />
+      <img src="img/SICKOCLOSE.jpeg" class="window hidden" />
+      <img src="img/SICKOFULL.jpeg" class="window hidden" />
+
+      <article>
+        <p>info</p>
+        <p>info</p>
+        <p>info</p>
+      </article>
+    </section>
+    <script src="js/navigation.js"></script>
   </body>
 </html>
+
+
+
