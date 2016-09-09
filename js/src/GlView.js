@@ -3,6 +3,7 @@
 
 var BumpMaterial = require('./BumpMaterial');
 var CanvasTexture = require('./CanvasTexture');
+var Stats = require('stats-js');
 
 var GlView = function() {
 
@@ -29,14 +30,25 @@ var GlView = function() {
     container = document.createElement( 'div' );
     document.body.appendChild( container );
 
+    stats = new Stats();
+    stats.setMode(0);
+
+    // Align top-left
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+
+    document.body.appendChild( stats.domElement );
+
     // canvasTexture = new CanvasTexture();
     // canvasTexture.update(.5);
     // fbTexture = canvasTexture.texture;
 
     var tLoader = new THREE.TextureLoader();
-    fbTexture = tLoader.load("/img/DERMA-LOGO-LUAR.jpg");
+    // fbTexture = tLoader.load("/img/DERMA-LOGO-LUAR.jpg");
+    fbTexture = tLoader.load("/img/BODYBTWO-1024.jpg");
 
-    renderer = new THREE.WebGLRenderer({ preserveDrawingBuffer: true/*, alpha: true*/});
+    renderer = new THREE.WebGLRenderer({ preserveDrawingBuffer: false/*, alpha: true*/});
     // renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setClearColor(0xffffff, 1.0);
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -125,16 +137,18 @@ var GlView = function() {
   }
 
   function render() {
+
+    stats.update();
     time+=0.01;
     if ( video.readyState === video.HAVE_ENOUGH_DATA ) {
       texture.needsUpdate = true;
     }
-    renderer.render(scene, camera);
+    // renderer.render(scene, camera);
     // canvasTexture.update(time);
     fbTexture.needsUpdate = true;
 
-    renderer.render(scene, camera, videoRenderTarget, true);
-    videoRenderTarget.needsUpdate = true;
+    // renderer.render(scene, camera, videoRenderTarget, true);
+    // videoRenderTarget.needsUpdate = true;
     fbMaterial.draw(time);
   }
 

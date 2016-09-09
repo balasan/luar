@@ -10,7 +10,6 @@ vec2 doModel(vec3 p);
 // #pragma glslify: smin = require(glsl-smooth-min)
 #pragma glslify: combine = require('glsl-combine-smooth')
 // #pragma glslify: rotate = require('glsl-sdf-ops/rotate-translate')
-#pragma glslify: noise = require('glsl-noise/simplex/4d')
 
 uniform sampler2D texture;
 uniform sampler2D texture2;
@@ -30,15 +29,16 @@ vec2 doModel(vec3 p) {
 
   h = h/3.0;
 
-  // vec2 dxdy = vec2(dxdy(texture, vUv, resolution, step, mult));
-  // float dX = dxdy.x;
-  // float dY = dxdy.y;
-  // vec3 N = normalize(vec3(dX,dY,1.0/30.0));
-  vec3 N = normalize(vec3(0.0,0.0,1.0));
+  vec2 dxdy = vec2(dxdy(texture, vUv, resolution, step, mult));
+  float dX = dxdy.x;
+  float dY = dxdy.y;
+
+  vec3 N = normalize(vec3(dX,dY,1.0/30.0));
+  // vec3 N = normalize(vec3(0.0,0.0,1.0));
 
   vec4 n = normalize(vec4(N, h));
 
-  float plane = dot(p,n.xyz) + noise(vec4(p, time)) * .1;
+  float plane = dot(p,n.xyz) + n.w;
 
   p.z += 0.1 * 1.0 / (h - 0.5);
 
@@ -95,22 +95,9 @@ void main() {
     vec3 viewDirection = vec3(0.0, 0.0, -1.0);
     // vec2 newUv = 0.22*pos.xy;
 
+    // newUv.x *= resolution.y/resolution.x;
     // newUv += vec2(0.5, 0.5);
-
-
     vec2 newUv = vUv;
-
-    // cover is <
-    // conatin is >
-    float a = resolution.x/resolution.y;
-    if (a < 1.0) {
-      newUv.y /= a;
-      newUv.y += (1.0 - 1.0/a) / 2.0;
-    }
-    else {
-      newUv.x *= a;
-      newUv.x += (1.0 - a) / 2.0;
-    }
 
 
     vec3 offsetNormal = -N + dot(N, viewDirection) * viewDirection;
@@ -118,7 +105,7 @@ void main() {
     // vec2 rOffset = vec2(0.0, 0.0);
     vec4 diffuseColor = texture2D(texture2, newUv + rOffset);
 
-    vec4 lightColor = texture2D(texture2, newUv + rOffset)*1.7 + 0.4*texture2D(texture, newUv + rOffset);
+    vec4 lightColor = texture2D(texture2, newUv + rOffset)*0.7 + 0.4*texture2D(texture, newUv + rOffset);
     vec4 ambientColor = vec4(vec3(lightColor.rgb*lightBrightness),0.5);
 
     vec3 diffuse = (lightColor.rgb * lightColor.a) * max(dot(N, L), 0.0);

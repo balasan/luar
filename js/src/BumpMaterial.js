@@ -9,7 +9,7 @@ function BumpMaterial(options){
     var customShaders3 = new CustomShaders();
 
     this.scene = new THREE.Scene();
-    this.camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, -10000, 10000 );
+    this.camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, -1000, 1000 );
     this.camera.position.set(0,0,0);
 
     this.renderer = options.renderer;
@@ -25,8 +25,10 @@ function BumpMaterial(options){
     this.fbos = [];
     this.init = function() {
 
+        // this.fbos[0] = new FeedbackObject(customShaders.bumpBumpShader);
         this.fbos[0] = new FeedbackObject(customShaders.edgeShader);
         this.fbos[0].material.uniforms.texture.value = this.texture;
+        // this.fbos[0].material.uniforms.texture2.value = this.texture;
 
 
         // this.fbos[1] = new FeedbackObject(customShaders.blurShader);
