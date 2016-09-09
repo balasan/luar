@@ -11,6 +11,7 @@ body {
   background-color: #000000;
   margin: 0;
   overflow: hidden;
+  perspective: 1000px;
 }
 
 canvas{
@@ -23,7 +24,20 @@ canvas{
 
 section {
   position: absolute;
-  transition: opacity 500ms ease-out;
+  transition: transform 800ms cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.above {
+ opacity: 0;
+ transition: transform 800ms cubic-bezier(0.165, 0.84, 0.44, 1), opacity 800ms cubic-bezier(0.165, 0.84, 0.44, 1);
+ transform: translateZ(1000px);
+ pointer-events: none;
+}
+
+.below {
+  opacity: 0;
+  transform: translateZ(-1000px);
+  pointer-events: none;
 }
 
 #hand {

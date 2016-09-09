@@ -20,7 +20,7 @@ for (var i = 0; i < windows.length; i++) {
   }
   if (leftRandom + windows[i].offsetWidth > x) {
     var difX = (leftRandom + windows[i].offsetWidth) - x;
-    leftRandom -= difX
+    leftRandom -= difX;
   } 
   windows[i].style.left = leftRandom + 'px';
   windows[i].style.top = topRandom + 'px';
@@ -32,18 +32,18 @@ function getRandom(min, max) {
 }
 
 hand.onclick = function() {
-  hand.classList.add('hidden');
-  setTimeout(function() {
-    logo.classList.remove('hidden');
-  }, 1000);
+  hand.classList = 'above';
+  // setTimeout(function() {
+    logo.classList = '';
+  // }, 1000);
 }
 
 logo.onclick = function() {
-  logo.classList.add('hidden');
+  logo.classList = 'above';
+  main.classList = '';
   setTimeout(function() {
-    main.classList.remove('hidden');
     setTimeout(showWindows, 1000);
-  }, 1000);
+  }, 500);
 }
 
 function showWindows() {
