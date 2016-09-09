@@ -1,6 +1,5 @@
 var hand, logo, main, windows = null;
 
-hand = document.getElementById("hand");
 logo = document.getElementById("logo");
 main = document.getElementById("main");
 windows = document.getElementsByClassName("window");
@@ -29,13 +28,6 @@ for (var i = 0; i < windows.length; i++) {
 function getRandom(min, max) {
   var num = Math.random() * (max - min) + min;
   return num;
-}
-
-hand.onclick = function() {
-  hand.classList = 'above';
-  // setTimeout(function() {
-    logo.classList = '';
-  // }, 1000);
 }
 
 logo.onclick = function() {

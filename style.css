@@ -69,15 +69,20 @@ section {
   pointer-events: none;
 }
 
-.window {
-  width: 45vw;
-  height: 25.3125vw;
-  position: absolute;
-  transition: opacity 500ms ease-in;
+#main {
+  width: 100%;
+  height: 100%;
 }
 
-img.window {
+.window {
+  position: absolute;
+  transition: opacity 500ms ease-in;
+  background-color: white;
+  max-height: 35vh;
   object-fit: contain;
+  -webkit-box-shadow: 10px 10px 29px -13px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 29px -13px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 29px -13px rgba(0,0,0,0.75);
 }
 
 article {

@@ -9,26 +9,39 @@
 </head>
   <script src="bundle.js"></script>
   <body cz-shortcut-listen="true">
-    <section id="hand">
-    </section>
 
-    <section id="logo" class="below">
+    <section id="logo" class="">
       <img src="img/logo_invert_no_outer.svg" />
     </section>
 
     <section id="main" class="below">
-      <video autoplay muted loop class="bg">
+      <video autoplay muted loop class="window hidden">
         <source src="img/LUAR12.mp4" type="video/mp4">
       </video>
+      
+      <img src="img/1.gif" class="window hidden" />
+      <img src="img/2.gif" class="window hidden" />
+      <img src="img/3.png" class="window hidden" />
+      <img src="img/4.gif" class="window hidden" />
+      <img src="img/5.png" class="window hidden" />
+      <img src="img/6.png" class="window hidden" />
+      <img src="img/7.gif" class="window hidden" />
 
       <video autoplay muted loop class="window hidden">
         <source src="img/LUAR28.mp4" type="video/mp4">
       </video>
-      
-      <img src="img/BODIES-LOGO-LUAR.png" class="window hidden" />
-      <img src="img/DERMA-LOGO-LUAR.png" class="window hidden" />
-      <img src="img/SICKOCLOSE.jpeg" class="window hidden" />
-      <img src="img/SICKOFULL.jpeg" class="window hidden" />
+
+      <img src="img/8.png" class="window hidden" />
+      <img src="img/9.gif" class="window hidden" />
+      <img src="img/10.gif" class="window hidden" />
+      <img src="img/11.png" class="window hidden" />
+      <img src="img/12.png" class="window hidden" />
+      <img src="img/13.png" class="window hidden" />
+      <img src="img/14.gif" class="window hidden" />
+      <img src="img/15.gif" class="window hidden" />
+      <img src="img/16.png" class="window hidden" />
+      <img src="img/17.gif" class="window hidden" />
+      <img src="img/18.png" class="window hidden" />
 
       <article>
         <p>info</p>
@@ -36,7 +49,13 @@
         <p>info</p>
       </article>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/utils/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
     <script src="js/navigation.js"></script>
+    <script type="text/javascript">
+      Draggable.create(".window", {type:"x,y", edgeResistance:0.65, bounds:"#main", throwProps:true});
+    </script>
   </body>
 </html>
 
