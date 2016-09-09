@@ -51,6 +51,6 @@ function reveal(window, i) {
   setTimeout(function() {
     window.parentNode.classList.remove('no-events')
     window.classList.remove('hidden');
-    window.nextSibling.nextElementSibling.remove();
+    //window.nextSibling.nextElementSibling.remove();
   }, i * 1000);
 }
