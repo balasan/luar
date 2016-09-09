@@ -49,8 +49,8 @@ function showWindows() {
 
 function reveal(window, i) {
   setTimeout(function() {
-    console.log(window.parentNode, 'parent')
     window.parentNode.classList.remove('no-events')
     window.classList.remove('hidden');
+    window.nextSibling.nextElementSibling.remove();
   }, i * 1000);
 }
