@@ -9,56 +9,59 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
   <script src="bundle.js"></script>
+  <script src="js/load.js"></script>
   <body cz-shortcut-listen="true">
 
     <section id="logo" class="">
-      <img src="img/logo_invert_no_outer.svg" />
+      <img id="spin" src="img/no_text.svg" />
+      <p id="loading">loading</p>
+      <p id="luar" class="hidden-text">LUAR</p>
     </section>
 
     <section id="main" class="below">
 
       <div class="window-parent no-events">
-        <img src="img/1.jpg" class="window hidden" />
+        <img src="img/1.jpg" class="window hidden" onLoad="count()" />
         <img src="img/1.jpg" class="shadow" />
       </div>
 
       <div class="window-parent no-events">
-        <img src="img/2.jpg" class="window hidden" />
+        <img src="img/2.jpg" class="window hidden" onLoad="count()" />
         <img src="img/2.jpg" class="shadow" />
        </div>
 
       <div class="window-parent no-events">  
-        <img src="img/3.jpg" class="window hidden" />
+        <img src="img/3.jpg" class="window hidden" onLoad="count()" />
         <img src="img/3.jpg" class="shadow" />
       </div>
 
       <div class="window-parent no-events"> 
-        <img src="img/4.jpg" class="window hidden" />
+        <img src="img/4.jpg" class="window hidden" onLoad="count()" />
         <img src="img/4.jpg" class="shadow" />
       </div>
 
       <div class="window-parent no-events"> 
-        <img src="img/5.jpg" class="window hidden" />
+        <img src="img/5.jpg" class="window hidden" onLoad="count()" />
         <img src="img/5.jpg" class="shadow" />
       </div>
 
       <div class="window-parent no-events"> 
-        <img src="img/6.jpg" class="window hidden" />
+        <img src="img/6.jpg" class="window hidden" onLoad="count()" />
         <img src="img/6.jpg" class="shadow" />
       </div>
 
       <div class="window-parent no-events"> 
-        <img src="img/6-2.jpg" class="window hidden" />
+        <img src="img/6-2.jpg" class="window hidden" onLoad="count()" />
         <img src="img/6-2.jpg" class="shadow" />
       </div>
 
       <div class="window-parent no-events"> 
-        <img src="img/7.jpg" class="window hidden" />
+        <img src="img/7.jpg" class="window hidden" onLoad="count()" />
         <img src="img/7.jpg" class="shadow" />
       </div>
 
       <div class="window-parent no-events"> 
-        <video autoplay muted loop class="window hidden">
+        <video autoplay muted loop class="window hidden" onLoad="count()">
           <source src="img/LUAR28.mp4" type="video/mp4">
         </video>
         <video autoplay muted loop class="shadow">
@@ -67,47 +70,47 @@
       </div>
 
       <div class="window-parent no-events"> 
-        <img src="img/8.jpg" class="window hidden" />
+        <img src="img/8.jpg" class="window hidden" onLoad="count()" />
         <img src="img/8.jpg" class="shadow" />
       </div>
 
       <div class="window-parent no-events"> 
-        <img src="img/9.jpg" class="window hidden" />
+        <img src="img/9.jpg" class="window hidden" onLoad="count()" />
         <img src="img/9.jpg" class="shadow" />
       </div>
 
       <div class="window-parent no-events"> 
-        <img src="img/10.jpg" class="window hidden" />
+        <img src="img/10.jpg" class="window hidden" onLoad="count()" />
         <img src="img/10.jpg" class="shadow" />
       </div>
       
       <div class="window-parent no-events"> 
-        <img src="img/11.jpg" class="window hidden" />
+        <img src="img/11.jpg" class="window hidden" onLoad="count()" />
         <img src="img/11.jpg" class="shadow" />
       </div>
       
       <div class="window-parent no-events"> 
-        <img src="img/11-2.jpg" class="window hidden" />
+        <img src="img/11-2.jpg" class="window hidden" onLoad="count()" />
         <img src="img/11-2.jpg" class="shadow" />
       </div>
 
       <div class="window-parent no-events"> 
-        <img src="img/12.jpg" class="window hidden" />
+        <img src="img/12.jpg" class="window hidden" onLoad="count()" />
         <img src="img/12.jpg" class="shadow" />
       </div>
 
       <div class="window-parent no-events"> 
-        <img src="img/13.jpg" class="window hidden" />
+        <img src="img/13.jpg" class="window hidden" onLoad="count()" />
         <img src="img/13.jpg" class="shadow" />
       </div>
 
       <div class="window-parent no-events"> 
-        <img src="img/14.jpg" class="window hidden" />
+        <img src="img/14.jpg" class="window hidden" onLoad="count()" />
         <img src="img/14.jpg" class="shadow" />
       </div>
 
       <div class="window-parent no-events">
-        <video autoplay muted loop class="window hidden">
+        <video autoplay muted loop class="window hidden" onLoad="count()">
           <source src="img/LUAR12.mp4" type="video/mp4">
         </video>
         <video autoplay muted loop class="shadow">
@@ -116,12 +119,12 @@
       </div>
 
       <div class="window-parent no-events"> 
-        <img src="img/15.jpg" class="window hidden" />
+        <img src="img/15.jpg" class="window hidden" onLoad="count()" />
         <img src="img/15.jpg" class="shadow" />
       </div>
 
       <div class="window-parent no-events"> 
-        <img src="img/16.jpg" class="window hidden" />
+        <img src="img/16.jpg" class="window hidden" onLoad="count()" />
         <img src="img/16.jpg" class="shadow" />
       </div>
 
@@ -131,13 +134,11 @@
         <p>info</p>
       </article>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/utils/Draggable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
     <script src="js/navigation.js"></script>
-    <script type="text/javascript">
-      Draggable.create(".window-parent", {type:"x,y", edgeResistance:0.65, bounds:"#main", throwProps:true});
-    </script>
   </body>
 </html>
 

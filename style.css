@@ -14,6 +14,31 @@ body {
   perspective: 1000px;
 }
 
+.smooth {
+  transition: transform 500ms ease;
+}
+
+.rotating {
+  animation: rotate 5s infinite linear;
+}
+
+.paused {
+   -webkit-animation-play-state: paused; 
+    animation-play-state: paused;
+}
+
+
+@keyframes rotate {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hidden-text {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .no-events {
   pointer-events: none;
 }
@@ -62,12 +87,18 @@ section {
   width: 100%;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+#logo p {
+  font-size: 38px;
+  font-family: 'goth';
+  margin: 0;
 }
 
 #logo img {
   height: 75vh;
 }
-
 
 #main {
   width: 100vw;
