@@ -18,15 +18,43 @@ var loadingTimeout = false;
 var loaded = false;
 var toAdd = 0;
 var started = false;
-
+var rotationNum = 0;
+var addBy = 10;
+var spin = document.getElementById("spin");
 Draggable.create(".window-parent", {type:"x,y", edgeResistance:0.65, bounds:"#main", throwProps:true});
 
-var spin = document.getElementById("spin");
-var ani = TweenMax.to(spin, 1, {rotation: 360, ease:Linear.easeNone, repeat:-1}, {timeScale:0});
+function addLetters() {
+  loadingEl.innerHTML += loadingArr[toAdd];
+  if (toAdd < loadingArr.length -1) {
+    toAdd++;
+    setTimeout(addLetters, 200);
+  }
+}
+
+addLetters();
+
+function spinInterval() {
+  rotationNum+=addBy;
+  spin.style['transform'] = "rotate("+rotationNum+"deg)";
+  if (true) setTimeout(spinInterval, 10);
+}
+
+spinInterval();
+
+function slowRotation() {
+ //toGoTo = Math.round(value / rotationNum) * rotationNum
+  if (addBy > 0) {
+    addBy -= 1;
+    setTimeout(slowRotation, 300);
+  } else {
+    logo.classList = 'above';
+    main.classList = '';
+    setTimeout(showWindows, 1500);
+  }
+}
 
 setTimeout(function() {
   loadingTimeout = true;
-  ani.pause();
   revealLoaded();
 }, 4000);
 
@@ -44,6 +72,7 @@ this.total.registerListener(function(val) {
 
 function revealLoaded() {
   if (loaded && loadingTimeout) {
+    slowRotation();
     loadingEl.classList = ('hidden-text');
     luarEl.classList = ('');
   }
@@ -68,14 +97,14 @@ function getRandom(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-logo.onclick = function() {
-  logo.classList = 'above';
-  main.classList = '';
+// logo.onclick = function() {
+//   logo.classList = 'above';
+//   main.classList = '';
 
-  setTimeout(function() {
-    setTimeout(showWindows, 1000);
-  }, 500);
-}
+//   setTimeout(function() {
+//     setTimeout(showWindows, 1000);
+//   }, 500);
+// }
 
 function showWindows() {
   console.log('showWindows');
