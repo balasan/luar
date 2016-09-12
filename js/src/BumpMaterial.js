@@ -22,13 +22,23 @@ function BumpMaterial(options){
 
     this.mesh;
 
+    var tLoader = new THREE.TextureLoader();
+    // fbTexture = tLoader.load("/img/DERMA-LOGO-LUAR.jpg");
+    this.logo = tLoader.load("/img/logo-bump.jpg");
+    this.logo.wrapS = this.logo.wrapT = THREE.RepeatWrapping;
+    // this.logo.magFilter = 
+    this.logo.minFilter = THREE.LinearMipMapNearestFilter;
+
     this.fbos = [];
     this.init = function() {
 
         // this.fbos[0] = new FeedbackObject(customShaders.bumpBumpShader);
+        // this.fbos[0].material.uniforms.texture2.value = this.texture;
+        // this.fbos[0].material.uniforms.texture.value = this.logo;
+
         this.fbos[0] = new FeedbackObject(customShaders.edgeShader);
         this.fbos[0].material.uniforms.texture.value = this.texture;
-        // this.fbos[0].material.uniforms.texture2.value = this.texture;
+        this.fbos[0].material.uniforms.bump.value = this.logo;
 
 
         // this.fbos[1] = new FeedbackObject(customShaders.blurShader);

@@ -1,8 +1,11 @@
 vec2 doModel(vec3 p);
 
-#pragma glslify: dxdy = require('./chunks/dxdy_rgb.glsl')
+#pragma glslify: dxdy = require('./chunks/dxdy_r.glsl')
+#pragma glslify: lights = require('./chunks/lights.glsl')
+
 #pragma glslify: phongSpec = require(glsl-specular-phong)
 #pragma glslify: blinnPhong = require(glsl-specular-blinn-phong)
+
 
 #pragma glslify: raytrace = require('glsl-raytrace', map = doModel, steps = 10)
 #pragma glslify: normal = require('glsl-sdf-normal', map = doModel)
@@ -23,22 +26,23 @@ uniform vec2 resolution;
 
 vec2 doModel(vec3 p) {
 
-  float step = 3.0;
-  float mult = 0.03;
+  // float step = 3.0;
+  // float mult = 0.03;
 
-  float h = texture2D(texture, vUv).r + texture2D(texture, vUv).g + texture2D(texture, vUv).b;
+  // float h = texture2D(texture, vUv).r + texture2D(texture, vUv).g + texture2D(texture, vUv).b;
 
-  h = h/3.0;
+  // h = h/3.0;
+  float h = 1.0;
 
-  // vec2 dxdy = vec2(dxdy(texture, vUv, resolution, step, mult));
-  // float dX = dxdy.x;
-  // float dY = dxdy.y;
-  // vec3 N = normalize(vec3(dX,dY,1.0/30.0));
+
   vec3 N = normalize(vec3(0.0,0.0,1.0));
 
   vec4 n = normalize(vec4(N, h));
 
-  float plane = dot(p,n.xyz) + noise(vec4(p, time)) * .1;
+  h = noise(vec4(p, time)) * .2;
+  // float plane = dot(p,n.xyz) + n.w;
+  float plane = dot(p,n.xyz) + h;
+
 
   p.z += 0.1 * 1.0 / (h - 0.5);
 
@@ -52,8 +56,8 @@ vec2 doModel(vec3 p) {
   float id = 0.0;
   float sphere  = length(p) - r;
 
-  // return vec2(sphere, 0.0);
-  return vec2(combine(plane, sphere, .8), 0.0);
+  return vec2(plane, 0.0);
+  // return vec2(combine(plane, sphere, .8), 0.0);
 }
 
 void main() {
@@ -62,9 +66,21 @@ void main() {
   float mult = 0.01;
   vec3 col = vec3(1.0, 1.0, 1.0);
 
-  // vec2 dxdy = vec2(dxdy(texture, vUv, resolution, step, mult));
-  // float dX = dxdy.x;
-  // float dY = dxdy.y;
+  vec2 texCoord = vUv;
+  float a = resolution.x/resolution.y;
+  if (a < 1.0) {
+    texCoord.y /= a;
+    texCoord.y += (1.0 - 1.0/a) / 2.0;
+  }
+  else {
+    texCoord.x *= a;
+    texCoord.x += (1.0 - a) / 2.0;
+  }
+
+  vec2 dxdy = vec2(dxdy(texture, texCoord * 8., resolution, step, mult));
+  float dX = dxdy.x;
+  float dY = dxdy.y;
+  // vec3 N = normalize(vec3(dX,dY,1.0/300.0));
 
   vec3 ro, rd;
 
@@ -82,21 +98,12 @@ void main() {
     vec3 lightDir = vec3( vec2( -mouse.x+0.5, 0.5+mouse.y)-(gl_FragCoord.xy / vec2(resolution.x,resolution.y)), lightWidth );
     lightDir.x *= resolution.x/resolution.y;
 
-    lightDir = vec3( 0.1, -0.7, lightWidth/2.0);
+    // lightDir = vec3( 0.1, -0.7, lightWidth/2.0);
 
+    vec3 N = normalize(vec3(dX,dY,1));
+    // vec3 N = nor;
 
-    float D = length(lightDir);
-
-    // vec3 N = normalize(vec3(dX,dY,1.0/50.0));
-    vec3 N = nor;
-    vec3 L = normalize(lightDir);
-    vec3 H = L;
-    // vec3 viewDirection = -H;
     vec3 viewDirection = vec3(0.0, 0.0, -1.0);
-    // vec2 newUv = 0.22*pos.xy;
-
-    // newUv += vec2(0.5, 0.5);
-
 
     vec2 newUv = vUv;
 
@@ -112,29 +119,16 @@ void main() {
       newUv.x += (1.0 - a) / 2.0;
     }
 
-
     vec3 offsetNormal = -N + dot(N, viewDirection) * viewDirection;
     vec2 rOffset = normalize(offsetNormal.xy) * length(offsetNormal) * .08;
-    // vec2 rOffset = vec2(0.0, 0.0);
+
     vec4 diffuseColor = texture2D(texture2, newUv + rOffset);
-
-    vec4 lightColor = texture2D(texture2, newUv + rOffset)*1.7 + 0.4*texture2D(texture, newUv + rOffset);
-    vec4 ambientColor = vec4(vec3(lightColor.rgb*lightBrightness),0.5);
-
-    vec3 diffuse = (lightColor.rgb * lightColor.a) * max(dot(N, L), 0.0);
-    vec3 ambient = ambientColor.rgb * ambientColor.a;
+    vec4 lightColor = texture2D(texture2, newUv + rOffset)*.9;
 
     float shin = 1000.1;
     float sf = blinnPhong(lightDir, viewDirection, N, shin);
-    // float sf = phongSpec(lightDir, viewDirection, N, shin);
 
-    vec3 falloff = vec3(1.0,3.0,20.5);
-    float attenuation = 1.0 / (falloff.x + (falloff.y*D) + (falloff.z * D * D) );
-
-    vec3 intensity =  ambient+( diffuse+sf ) * attenuation;
-    vec3 finalColor = (diffuseColor.rgb * intensity);
-
-    col = ambient+( finalColor+sf * 1.0 );
+    col = lights(diffuseColor, lightColor, lightBrightness, sf, lightDir, N);
 
 
   }

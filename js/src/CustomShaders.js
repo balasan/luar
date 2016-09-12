@@ -10,8 +10,12 @@ var CustomShaders = function(){
 	}
 
   this.edgeShader = {
-    uniforms: THREE.UniformsUtils.merge([defualtUniforms]),
-    vertexShader : require('./shaders/default.vert'),
+    uniforms: THREE.UniformsUtils.merge( [
+      defualtUniforms,
+      {
+        "bump"  : { type: "t", value: null },
+      }
+    ]),    vertexShader : require('./shaders/default.vert'),
     fragmentShader : require('./shaders/edge.frag')
   },
 
