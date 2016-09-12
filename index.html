@@ -3,32 +3,127 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Luar</title>
+  <link rel='stylesheet', href='font.css'>
   <link rel='stylesheet', href='style.css'>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
   <script src="bundle.js"></script>
   <body cz-shortcut-listen="true">
-    <section id="hand">
-    </section>
 
-    <section id="logo" class="below">
+    <section id="logo" class="">
       <img src="img/logo_invert_no_outer.svg" />
     </section>
 
     <section id="main" class="below">
-      <video autoplay muted loop class="bg">
-        <source src="img/LUAR12.mp4" type="video/mp4">
-      </video>
 
-      <video autoplay muted loop class="window hidden">
-        <source src="img/LUAR28.mp4" type="video/mp4">
-      </video>
+      <div class="window-parent no-events">
+        <img src="img/1.jpg" class="window hidden" />
+        <img src="img/1.jpg" class="shadow" />
+      </div>
+
+      <div class="window-parent no-events">
+        <img src="img/2.jpg" class="window hidden" />
+        <img src="img/2.jpg" class="shadow" />
+       </div>
+
+      <div class="window-parent no-events">  
+        <img src="img/3.jpg" class="window hidden" />
+        <img src="img/3.jpg" class="shadow" />
+      </div>
+
+      <div class="window-parent no-events"> 
+        <img src="img/4.jpg" class="window hidden" />
+        <img src="img/4.jpg" class="shadow" />
+      </div>
+
+      <div class="window-parent no-events"> 
+        <img src="img/5.jpg" class="window hidden" />
+        <img src="img/5.jpg" class="shadow" />
+      </div>
+
+      <div class="window-parent no-events"> 
+        <img src="img/6.jpg" class="window hidden" />
+        <img src="img/6.jpg" class="shadow" />
+      </div>
+
+      <div class="window-parent no-events"> 
+        <img src="img/6-2.jpg" class="window hidden" />
+        <img src="img/6-2.jpg" class="shadow" />
+      </div>
+
+      <div class="window-parent no-events"> 
+        <img src="img/7.jpg" class="window hidden" />
+        <img src="img/7.jpg" class="shadow" />
+      </div>
+
+      <div class="window-parent no-events"> 
+        <video autoplay muted loop class="window hidden">
+          <source src="img/LUAR28.mp4" type="video/mp4">
+        </video>
+        <video autoplay muted loop class="shadow">
+          <source src="img/LUAR28.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="window-parent no-events"> 
+        <img src="img/8.jpg" class="window hidden" />
+        <img src="img/8.jpg" class="shadow" />
+      </div>
+
+      <div class="window-parent no-events"> 
+        <img src="img/9.jpg" class="window hidden" />
+        <img src="img/9.jpg" class="shadow" />
+      </div>
+
+      <div class="window-parent no-events"> 
+        <img src="img/10.jpg" class="window hidden" />
+        <img src="img/10.jpg" class="shadow" />
+      </div>
       
-      <img src="img/BODIES-LOGO-LUAR.png" class="window hidden" />
-      <img src="img/DERMA-LOGO-LUAR.png" class="window hidden" />
-      <img src="img/SICKOCLOSE.jpeg" class="window hidden" />
-      <img src="img/SICKOFULL.jpeg" class="window hidden" />
+      <div class="window-parent no-events"> 
+        <img src="img/11.jpg" class="window hidden" />
+        <img src="img/11.jpg" class="shadow" />
+      </div>
+      
+      <div class="window-parent no-events"> 
+        <img src="img/11-2.jpg" class="window hidden" />
+        <img src="img/11-2.jpg" class="shadow" />
+      </div>
+
+      <div class="window-parent no-events"> 
+        <img src="img/12.jpg" class="window hidden" />
+        <img src="img/12.jpg" class="shadow" />
+      </div>
+
+      <div class="window-parent no-events"> 
+        <img src="img/13.jpg" class="window hidden" />
+        <img src="img/13.jpg" class="shadow" />
+      </div>
+
+      <div class="window-parent no-events"> 
+        <img src="img/14.jpg" class="window hidden" />
+        <img src="img/14.jpg" class="shadow" />
+      </div>
+
+      <div class="window-parent no-events">
+        <video autoplay muted loop class="window hidden">
+          <source src="img/LUAR12.mp4" type="video/mp4">
+        </video>
+        <video autoplay muted loop class="shadow">
+          <source src="img/LUAR12.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="window-parent no-events"> 
+        <img src="img/15.jpg" class="window hidden" />
+        <img src="img/15.jpg" class="shadow" />
+      </div>
+
+      <div class="window-parent no-events"> 
+        <img src="img/16.jpg" class="window hidden" />
+        <img src="img/16.jpg" class="shadow" />
+      </div>
 
       <article>
         <p>info</p>
@@ -36,7 +131,13 @@
         <p>info</p>
       </article>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/utils/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
     <script src="js/navigation.js"></script>
+    <script type="text/javascript">
+      Draggable.create(".window-parent", {type:"x,y", edgeResistance:0.65, bounds:"#main", throwProps:true});
+    </script>
   </body>
 </html>
 
