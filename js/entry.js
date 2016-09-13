@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   Loader.init(() => {
     glView.init();
-    logo.classList = 'above';
-    main.classList = '';
+    logo.classList.add('above');
+    main.classList.remove('below');
   });
 
   var audio = new Audio();
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     audio.play();
   })
 
-  logo = document.getElementById("logo");
-  main = document.getElementById("main");
+  var logo = document.getElementById("logo");
+  var main = document.getElementById("main");
 
 })

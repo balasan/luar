@@ -69,13 +69,13 @@ section {
 .above {
  opacity: 0;
  transition: transform 800ms cubic-bezier(0.165, 0.84, 0.44, 1), opacity 800ms cubic-bezier(0.165, 0.84, 0.44, 1);
- // transform: translateZ(1000px);
+/* transform: translateZ(1000px);*/
  pointer-events: none;
 }
 
 .below {
   opacity: 0;
-  // transform: translateZ(-1000px);
+/*  transform: translateZ(-1000px);*/
   pointer-events: none;
 }
 
@@ -125,7 +125,7 @@ article {
   position: absolute;
   top: 30px;
   display: flex;
-  // flex-direction: column;
+/*  flex-direction: column;*/
   right: 0;
   padding: 1vw;
 }
