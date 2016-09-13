@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', function(){
   glView = new GlView();
   glView.init();
 
-  logo.onclick = function() {
-    logo.classList = 'above';
-    main.classList = '';
+  // logo.onclick = function() {
+  //   logo.classList = 'above';
+  //   main.classList = '';
 
-    setTimeout(function() {
-      setTimeout(Windows.showWindows, 1000);
-    }, 500);
-}
+  //   setTimeout(function() {
+  //     setTimeout(Windows.showWindows, 1000);
+  //   }, 500);
+  // }
 
 })
