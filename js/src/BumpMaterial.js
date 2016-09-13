@@ -1,6 +1,7 @@
 'use strict';
 
 var CustomShaders = require('./customShaders');
+var Slide = require('./slide.js');
 
 function BumpMaterial(options){
 
@@ -10,7 +11,7 @@ function BumpMaterial(options){
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, -1000, 1000 );
-    this.camera.position.set(0,0,0);
+    this.camera.position.set(0, 0, 0);
 
     this.renderer = options.renderer;
     this.texture = options.texture;
@@ -20,9 +21,33 @@ function BumpMaterial(options){
     this.video = options.video;
     this.expand = true;
 
+    var tLoader = new THREE.TextureLoader();
+
+
+    var slides = [];
+    for (var i = 0; i < 16; i++) {
+        var index = i + 1;
+        var slide = new Slide({
+            url: '/img/' + index + '.jpg'
+        });
+        slides.push(slide);
+    }
+    for (var i = 0; i < 16; i++ ) {
+        var slide = new Slide({
+            url: '/img/logo-black.jpg',
+            black: true
+        });
+        slides.push(slide);
+    }
+
+    var currentSlide = slides[Math.floor(Math.random() * slides.length)];
+    currentSlide.show();
+    this.texture = currentSlide.texture;
+
+
+
     this.mesh;
 
-    var tLoader = new THREE.TextureLoader();
     // fbTexture = tLoader.load("/img/DERMA-LOGO-LUAR.jpg");
     this.logo = tLoader.load("img/logo-bump.jpg");
     this.logo.wrapS = this.logo.wrapT = THREE.RepeatWrapping;
@@ -39,6 +64,7 @@ function BumpMaterial(options){
         this.fbos[0] = new FeedbackObject(customShaders.edgeShader);
         this.fbos[0].material.uniforms.texture.value = this.texture;
         this.fbos[0].material.uniforms.bump.value = this.logo;
+        this.fbos[0].material.uniforms.aspect.value = currentSlide.a;
 
 
         // this.fbos[1] = new FeedbackObject(customShaders.blurShader);
@@ -92,7 +118,7 @@ function BumpMaterial(options){
         this.geometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight, 0);
 
         this.mesh = new THREE.Mesh(this.geometry, this.material);
-        this.mesh.position.set(0,0,0);
+        this.mesh.position.set(0, 0, 0);
         this.scene.add(this.mesh);
     }
 
@@ -137,7 +163,15 @@ function BumpMaterial(options){
         //     window.innerWidth * ( 0+.5 ), window.innerWidth * (.5 + .5)
         // );
 
-        this.texture.needsUpdate = true;
+
+        if (currentSlide.expired()) {
+            currentSlide = slides[Math.floor(Math.random() * slides.length)];
+            currentSlide.show();
+            this.fbos[0].material.uniforms.texture.value = this.texture = currentSlide.texture;
+            this.fbos[0].material.uniforms.aspect.value = currentSlide.a;
+        }
+
+        // this.texture.needsUpdate = true;
         this.update();
 
         // if(this.expand){
