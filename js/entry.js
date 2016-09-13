@@ -1,6 +1,8 @@
 window.THREE = require('three/three.min.js');
 
 var GlView = require('./src/GlView.js');
+require('./../css/style.css');
+require('./../css/font.css');
 
 document.addEventListener('DOMContentLoaded', function() {
 
