@@ -19,7 +19,7 @@ for (var i = 0; i < parents.length; i++) {
   parents[i].style.top = topVal+'px';
 }
 
-function moveWindow(obj, interval) {
+function moveWindow(obj) {
   var leftVal = getRandom(0, x - obj.el.offsetWidth);
   var topVal = getRandom(0, y - obj.el.offsetHeight);
   obj.el.style.left = leftVal+'px';
@@ -30,7 +30,7 @@ function moveWindow(obj, interval) {
     obj.child.classList.remove('hidden');
   }, 1000);
   setTimeout(function() {
-    moveWindow(obj, interval);
+    moveWindow(obj);
   }, rand);
 }
 
@@ -48,8 +48,7 @@ function reveal(obj, i) {
   setTimeout(function() {
     obj.el.classList.remove('no-events')
     obj.child.classList.remove('hidden');
-    var rand = Math.floor(Math.random() * 20000) + 10000;
-    moveWindow(obj, rand);
+    moveWindow(obj);
   }, i * 1000);
 }
 

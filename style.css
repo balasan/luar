@@ -14,24 +14,6 @@ body {
   perspective: 1000px;
 }
 
-.smooth {
-  transition: transform 500ms ease;
-}
-
-.rotating {
-  animation: rotate 5s infinite linear;
-}
-
-.paused {
-   -webkit-animation-play-state: paused; 
-    animation-play-state: paused;
-}
-
-
-@keyframes rotate {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
 
 .hidden-text {
   position: absolute;
@@ -97,7 +79,7 @@ section {
 }
 
 #logo img {
-  height: 75vh;
+  height: 50vh;
 }
 
 #main {
