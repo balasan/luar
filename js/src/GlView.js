@@ -113,8 +113,7 @@ var GlView = function() {
       texture.offset.x = (1 - windowAspect/videoAspect) * 1/2;
       texture.repeat.y = 1
       texture.offset.y = 0
-    }
-    else{
+    } else {
       texture.repeat.y = videoAspect/windowAspect;
       texture.offset.y = (1 - videoAspect/windowAspect) * 1/2;
       texture.repeat.x = 1

@@ -51,12 +51,13 @@ function slowRotation() {
   if (rotationNum != goTo) {
     var change = (goTo - rotationNum) * 0.05;
     rotationNum += change;
-
-    if (rotationNum >= goTo - 1) {
-      logo.classList.add('above');
-      main.classList.remove('below');
-      if (callback)  callback();
-      // setTimeout(Windows.showImages, 500);
+    if (rotationNum >= (goTo - 1)) {
+      setTimeout(function() {
+        logo.classList.add('above');
+      }, 1000);
+      setTimeout(function() {
+        if (callback) callback();
+      }, 2000);
     } else {
       spin.style['transform'] = "rotate("+rotationNum+"deg)";
       setTimeout(slowRotation, 10);
@@ -68,10 +69,10 @@ function slowRotation() {
 function revealLoaded() {
   loaded = true;
   loadingEl.classList.add('hidden-text');
-  slowRotation();
   setTimeout(function() {
-     luarEl.classList.remove('hidden-text');
-   }, 1000);
+    luarEl.classList.remove('hidden-text');
+  }, 1000);
+  slowRotation();
 }
 
 module.exports = {

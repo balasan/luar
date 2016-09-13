@@ -18,6 +18,7 @@ body {
   opacity: 1;
   position: absolute;
   text-align: center;
+  color: white;
   margin: 0 auto;
   width: 100%;
   font-family: 'goth';
@@ -32,7 +33,7 @@ body {
   transform: translateY(25vh) translateX(-50%);
   width: 100%;
   text-align: center;
-  padding-top: 5vh;
+  padding-top: 0vh;
 }
 
 #loading {
@@ -76,20 +77,6 @@ section {
   opacity: 0;
   transform: translateZ(-1000px);
   pointer-events: none;
-}
-
-#hand {
-  cursor: pointer;
-  height: 100%;
-  width: 100%;
-  background-image: url('img/LHANDTHREE_trans.png');
-  background-size: contain;
-  background-position: 75% top;
-  background-repeat: no-repeat;
-}
-
-.spin {
-  transition: transform 100ms linear;
 }
 
 #logo {
