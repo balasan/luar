@@ -14,9 +14,36 @@ body {
   perspective: 1000px;
 }
 
+.loading {
+  opacity: 1;
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  font-family: 'goth';
+  transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.text-parent {
+  position: absolute;
+  box-sizing: border-box;
+  top: 50%;
+  left: 50%;
+  transform: translateY(25vh) translateX(-50%);
+  width: 100%;
+  text-align: center;
+  padding-top: 5vh;
+}
+
+#loading {
+  font-size: 24px;
+}
+
+#luar {
+  font-size: 48px;
+}
 
 .hidden-text {
-  position: absolute;
   opacity: 0;
   pointer-events: none;
 }
@@ -74,12 +101,6 @@ section {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-#logo p {
-  font-size: 38px;
-  font-family: 'goth';
-  margin: 0;
 }
 
 #logo img {

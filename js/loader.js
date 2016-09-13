@@ -68,8 +68,10 @@ function slowRotation() {
 function revealLoaded() {
   loaded = true;
   loadingEl.classList.add('hidden-text');
-  luarEl.classList.remove('hidden-text');
   slowRotation();
+  setTimeout(function() {
+     luarEl.classList.remove('hidden-text');
+   }, 1000);
 }
 
 module.exports = {

@@ -39,6 +39,19 @@ function BumpMaterial(options){
         });
         slides.push(slide);
     }
+    var slide = new Slide({
+        url: "/img/LUAR28.mp4",
+        video: true,
+        texture: this.video
+    })
+    slides.push(slide);
+    var slide = new Slide({
+        url: "/img/LUAR12.mp4",
+        video: true,
+        texture: this.video
+    })
+    slides.push(slide);
+
 
     var currentSlide = slides[Math.floor(Math.random() * slides.length)];
     currentSlide.show();
@@ -171,7 +184,8 @@ function BumpMaterial(options){
             this.fbos[0].material.uniforms.aspect.value = currentSlide.a;
         }
 
-        // this.texture.needsUpdate = true;
+        if (currentSlide.video)
+            this.texture.needsUpdate = true;
         this.update();
 
         // if(this.expand){
