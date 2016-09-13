@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     audio.play();
   })
 
-  logo = document.getElementById("logo");
-  main = document.getElementById("main");
+  var logo = document.getElementById("logo");
+  var main = document.getElementById("main");
 
 })
