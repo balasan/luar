@@ -19,8 +19,6 @@ window.count = function() {
 }
 
 var hand, windows = null;
-
-
 var loadingArr = "loading...".split('');
 var loadingEl = document.getElementById('loading');
 var luarEl = document.getElementById('luar');
