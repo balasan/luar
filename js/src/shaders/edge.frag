@@ -2,7 +2,7 @@
 // More iterations means more detail + aliasing
 // More strength means more distortion
 #define ITERATIONS 10
-#define DISTORTION 0.125
+#define DISTORTION 0.0525
 
 #pragma glslify: dxdy = require('./chunks/dxdy_r.glsl')
 #pragma glslify: blinnPhong = require(glsl-specular-blinn-phong)
@@ -14,11 +14,12 @@ uniform sampler2D texture;
 uniform sampler2D bump;
 varying vec2 vUv;
 uniform vec2 mouse;
+uniform float aspect;
 
 
 void main( void ) {
 
-    float a = resolution.x/resolution.y;
+    float a = 1. / aspect * resolution.x/resolution.y;
 
 
     vec2 look = (mouse.xy) * vec2(.2, -.2);
@@ -74,7 +75,7 @@ void main( void ) {
     // offset *= 1. - logo.a * .8;
 
     vec4 col = texture2D(texture, newUv + offset);
-    col = vec4(val * .1  + col.rgb, col.a);
+    col = vec4(val * .1 * col.r  + col.rgb, col.a);
 
 
 

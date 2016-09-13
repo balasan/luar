@@ -11,6 +11,7 @@ var rotationNum = 0;
 var goTo = null;
 Draggable.create(".window-parent", {type:"x,y", edgeResistance:0.65, bounds:"#main", throwProps:true});
 var spin = document.getElementById("spin");
+var callback;
 
 function addLetters() {
   loadingEl.innerHTML += loadingArr[toAdd];
@@ -20,7 +21,15 @@ function addLetters() {
   }
 }
 
-addLetters();
+function init(_callback) {
+
+  addLetters();
+  spinInterval();
+  callback = _callback;
+  setTimeout(function() { revealLoaded() }, 4000);
+
+}
+
 
 function spinInterval() {
   rotationNum += 10;
@@ -28,7 +37,6 @@ function spinInterval() {
   if (!loaded) setTimeout(spinInterval, 10);
 }
 
-spinInterval();
 
 function slowRotation() {
   if(!goTo) {
@@ -38,7 +46,7 @@ function slowRotation() {
       goTo = Math.floor(rotationNum/360) * 360;
     } else {
       goTo = 360;
-    }    
+    }
   }
   if (rotationNum != goTo) {
     var change = (goTo - rotationNum) * 0.05;
@@ -47,7 +55,8 @@ function slowRotation() {
     if (rotationNum >= goTo - 1) {
       logo.classList.add('above');
       main.classList.remove('below');
-      setTimeout(Windows.showImages, 500);
+      if (callback)  callback();
+      // setTimeout(Windows.showImages, 500);
     } else {
       spin.style['transform'] = "rotate("+rotationNum+"deg)";
       setTimeout(slowRotation, 10);
@@ -55,7 +64,6 @@ function slowRotation() {
   }
 }
 
-setTimeout(function() { revealLoaded() }, 4000);
 
 function revealLoaded() {
   loaded = true;
@@ -65,5 +73,5 @@ function revealLoaded() {
 }
 
 module.exports = {
-  logo: logo
+  init: init
 }

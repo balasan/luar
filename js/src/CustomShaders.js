@@ -14,6 +14,7 @@ var CustomShaders = function(){
       defualtUniforms,
       {
         "bump"  : { type: "t", value: null },
+        "aspect" : {type: "f", value: 0}
       }
     ]),    vertexShader : require('./shaders/default.vert'),
     fragmentShader : require('./shaders/edge.frag')
