@@ -23,6 +23,9 @@
     "three": "^0.76.1"
   },
   "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
     "glsl-sdf-normal": "^1.0.0",
     "webpack": "^1.12.9"
   }

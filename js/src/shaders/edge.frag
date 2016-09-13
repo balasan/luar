@@ -75,7 +75,7 @@ void main( void ) {
     // offset *= 1. - logo.a * .8;
 
     vec4 col = texture2D(texture, newUv + offset);
-    col = vec4(val * .1 * col.r  + col.rgb, col.a);
+    col = vec4(val * .1 * (col.r + col.g + col.b) + col.rgb, col.a);
 
 
 
