@@ -1,6 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
 
+var precss = require('precss');
+var easings = require('postcss-easings');
+var postcss = require('postcss-loader');
+var autoprefixer = require('autoprefixer');
+
 module.exports = {
   devtool: 'inline-source-map',
   entry: [
@@ -11,9 +16,9 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/'
   },
-  // postcss: function() {
-  //   return [easings, autoprefixer, precss];
-  // },
+  postcss: function() {
+    return [easings, autoprefixer, precss];
+  },
   module: {
     loaders: [
       {
@@ -25,9 +30,11 @@ module.exports = {
         }
       },
       { test: /\.(glsl|frag|vert)$/, loader: 'raw', exclude: /node_modules/ },
-      { test: /\.(glsl|frag|vert)$/, loader: 'glslify', exclude: /node_modules/ }
-      // test: /\.css$|\.scss$/,
-      // loader: 'style-loader!css-loader!postcss-loader'
+      { test: /\.(glsl|frag|vert)$/, loader: 'glslify', exclude: /node_modules/ },
+      {
+        test: /\.css$|\.scss$/,
+        loader: 'style-loader!css-loader!postcss-loader'
+      }
       // loader: ExtractTextPlugin.extract('style-loader','css-loader!postcss-loader')
       // loader: 'css?sourceMap!postcss!sass?sourceMap&sourceMapContents',
     ]
