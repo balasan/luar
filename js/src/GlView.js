@@ -54,7 +54,7 @@ var GlView = function() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
 
-    initVideo();
+    // initVideo();
 
     fbMaterial = new BumpMaterial({
       renderer: renderer,
@@ -76,7 +76,7 @@ var GlView = function() {
   function initVideo(){
 
     video = document.createElement("video");
-    video.src = "img/buildings.mp4";
+    video.src = "img/LUAR28.mp4";
     video.loop = true;
     video.muted = true;
     video.play();
@@ -108,25 +108,25 @@ var GlView = function() {
     var windowAspect = w/h;
     var videoAspect = 16/9;
 
-    if (windowAspect < videoAspect) {
-      texture.repeat.x = windowAspect/videoAspect;
-      texture.offset.x = (1 - windowAspect/videoAspect) * 1/2;
-      texture.repeat.y = 1
-      texture.offset.y = 0
-    }
-    else{
-      texture.repeat.y = videoAspect/windowAspect;
-      texture.offset.y = (1 - videoAspect/windowAspect) * 1/2;
-      texture.repeat.x = 1
-      texture.offset.x = 0
-    }
+    // if (windowAspect < videoAspect) {
+    //   texture.repeat.x = windowAspect/videoAspect;
+    //   texture.offset.x = (1 - windowAspect/videoAspect) * 1/2;
+    //   texture.repeat.y = 1
+    //   texture.offset.y = 0
+    // }
+    // else{
+    //   texture.repeat.y = videoAspect/windowAspect;
+    //   texture.offset.y = (1 - videoAspect/windowAspect) * 1/2;
+    //   texture.repeat.x = 1
+    //   texture.offset.x = 0
+    // }
 
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    // camera.aspect = window.innerWidth / window.innerHeight;
+    // camera.updateProjectionMatrix();
+    // renderer.setSize( window.innerWidth, window.innerHeight );
 
     fbMaterial.resize(w,h);
-    videoRenderTarget.setSize(w,h);
+    // videoRenderTarget.setSize(w,h);
     // canvasTexture.resize();
 
   }
@@ -140,9 +140,9 @@ var GlView = function() {
 
     stats.update();
     time+=0.01;
-    if ( video.readyState === video.HAVE_ENOUGH_DATA ) {
-      texture.needsUpdate = true;
-    }
+    // if ( video.readyState === video.HAVE_ENOUGH_DATA ) {
+    //   texture.needsUpdate = true;
+    // }
     // renderer.render(scene, camera);
     // canvasTexture.update(time);
     fbTexture.needsUpdate = true;

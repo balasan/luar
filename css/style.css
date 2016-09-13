@@ -55,8 +55,8 @@ body {
 canvas {
   position: absolute;
   top: 0;
-  width: 1440px;
-  height: 742px;
+  width: 100% !important;
+  height: 100% !important;
   z-index: -1;
 }
 
@@ -136,16 +136,38 @@ section {
 
 article {
   position: absolute;
+  top: 30px;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   right: 0;
-  top: 0;
   padding: 1vw;
 }
 
 article p {
-  margin: 0;
-  font-family: 'goth';
+  margin: 0 30px;
+  font-size: 30px;
+}
+
+@media (max-width: 900px) {
+
+  article {
+    flex-direction: column;
+    top: 5px;
+  }
+  article p{
+    margin: 5px 10px;
+    font-size: 20px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 .shadow {

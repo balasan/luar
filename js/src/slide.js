@@ -2,15 +2,29 @@
 function Slide(options) {
 
   this.black = options.black;
-
   this.url = options.url;
 
-  this.loader = new THREE.TextureLoader();
-  this.texture = this.loader.load(this.url, () => {
-    this.w = this.texture.image.width;
-    this.h = this.texture.image.height;
-    this.a = this.w / this.h;
-  });
+  if (options.video) {
+    this.video = document.createElement("video");
+    this.video.src = options.url;
+    this.video.loop = true;
+    this.video.muted = true;
+    this.video.play();
+
+    this.texture = new THREE.Texture(this.video);
+    this.texture.needsUpdate = true;
+    this.texture.minFilter = THREE.LinearFilter;
+    this.texture.magFilter = THREE.LinearFilter;
+    this.a = 16 / 9;
+  }
+  else {
+    this.loader = new THREE.TextureLoader();
+    this.texture = this.loader.load(this.url, () => {
+      this.w = this.texture.image.width;
+      this.h = this.texture.image.height;
+      this.a = this.w / this.h;
+    });
+  }
 
 }
 
