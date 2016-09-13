@@ -16,6 +16,14 @@ module.exports = {
   // },
   module: {
     loaders: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel', // 'babel-loader' is also a legal name to reference
+        query: {
+          presets: ['es2015']
+        }
+      },
       { test: /\.(glsl|frag|vert)$/, loader: 'raw', exclude: /node_modules/ },
       { test: /\.(glsl|frag|vert)$/, loader: 'glslify', exclude: /node_modules/ }
       // test: /\.css$|\.scss$/,

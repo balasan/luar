@@ -38,7 +38,7 @@ var GlView = function() {
     stats.domElement.style.left = '0px';
     stats.domElement.style.top = '0px';
 
-    document.body.appendChild( stats.domElement );
+    // document.body.appendChild( stats.domElement );
 
     // canvasTexture = new CanvasTexture();
     // canvasTexture.update(.5);
