@@ -25,7 +25,7 @@ addLetters();
 function spinInterval() {
   rotationNum += 10;
   spin.style['transform'] = "rotate("+rotationNum+"deg)";
-  if (!loaded) setTimeout(spinInterval, 1);
+  if (!loaded) setTimeout(spinInterval, 10);
 }
 
 spinInterval();
@@ -44,9 +44,9 @@ function slowRotation() {
     var change = (goTo - rotationNum) * 0.05;
     rotationNum += change;
 
-    if (rotationNum >= goTo -1.5) {
-      logo.classList = 'above';
-      main.classList = '';
+    if (rotationNum >= goTo - 1) {
+      logo.classList.add('above');
+      main.classList.remove('below');
       setTimeout(Windows.showImages, 500);
     } else {
       spin.style['transform'] = "rotate("+rotationNum+"deg)";
@@ -59,8 +59,8 @@ setTimeout(function() { revealLoaded() }, 4000);
 
 function revealLoaded() {
   loaded = true;
-  loadingEl.classList = ('hidden-text');
-  luarEl.classList = ('');
+  loadingEl.classList.add('hidden-text');
+  luarEl.classList.remove('hidden-text');
   slowRotation();
 }
 
