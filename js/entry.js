@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
   logo = document.getElementById("logo");
   main = document.getElementById("main");
 
-  glView = new GlView();
-  glView.init();
+  //glView = new GlView();
+  //glView.init();
 
   logo.onclick = function() {
     logo.classList = 'above';
