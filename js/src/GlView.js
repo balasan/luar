@@ -46,7 +46,7 @@ var GlView = function() {
 
     var tLoader = new THREE.TextureLoader();
     // fbTexture = tLoader.load("/img/DERMA-LOGO-LUAR.jpg");
-    fbTexture = tLoader.load("/img/BODYBTWO-1024.jpg");
+    fbTexture = tLoader.load("img/BODYBTWO-1024.jpg");
 
     renderer = new THREE.WebGLRenderer({ preserveDrawingBuffer: false/*, alpha: true*/});
     // renderer.setPixelRatio( window.devicePixelRatio );

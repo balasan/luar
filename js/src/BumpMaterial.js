@@ -24,7 +24,7 @@ function BumpMaterial(options){
 
     var tLoader = new THREE.TextureLoader();
     // fbTexture = tLoader.load("/img/DERMA-LOGO-LUAR.jpg");
-    this.logo = tLoader.load("/img/logo-bump.jpg");
+    this.logo = tLoader.load("img/logo-bump.jpg");
     this.logo.wrapS = this.logo.wrapT = THREE.RepeatWrapping;
     // this.logo.magFilter = 
     this.logo.minFilter = THREE.LinearMipMapNearestFilter;
