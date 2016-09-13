@@ -48,7 +48,7 @@ function BumpMaterial(options){
         slides.push(slide);
     }
 
-    if (!mobilecheck) {
+    if (!mobilecheck()) {
         var slide = new Slide({
             url: "/img/LUAR28.mp4",
             video: true,
