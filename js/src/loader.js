@@ -1,8 +1,8 @@
-var Windows = require('./windows');
-var hand, windows = null;
 var loadingArr = "loading...".split('');
+var luarArr = "LUAR".split('');
 var loadingEl = document.getElementById('loading');
 var luarEl = document.getElementById('luar');
+var logo = document.getElementById('logo');
 var loadingTimeout = false;
 var loaded = false;
 var toAdd = 0;
@@ -11,33 +11,50 @@ var rotationNum = 0;
 var goTo = null;
 var spin = document.getElementById("spin");
 var callback;
+var doFlicker = true;
 
-function addLetters() {
-  loadingEl.innerHTML += loadingArr[toAdd];
-  if (toAdd < loadingArr.length -1) {
+function addLetters(array, el) {
+  el.innerHTML += array[toAdd];
+  if (toAdd < array.length - 1) {
     toAdd++;
-    setTimeout(addLetters, 200);
+    setTimeout(() => addLetters(array, el), 50);
+  }
+  else {
+    toAdd = 0;
+    flicker();
   }
 }
 
-function init(_callback) {
+function flicker() {
+  var r = Math.random();
+  if (r > .90) {
+    loadingEl.style.visibility = 'hidden';
+    // luarEl.style.visibility = 'hidden';
+  }
+  else {
+    loadingEl.style.visibility = 'visible';
+    // luarEl.style.visibility = 'visible';
+  }
+  if (doFlicker) setTimeout(flicker, 30);
+}
 
-  addLetters();
+function init(_callback) {
+  addLetters(loadingArr, loadingEl);
   spinInterval();
   callback = _callback;
   setTimeout(function() { revealLoaded() }, 4000);
-
 }
 
 
 function spinInterval() {
-  rotationNum += 10;
+  rotationNum += 8;
   spin.style['transform'] = "rotate("+rotationNum+"deg)";
   if (!loaded) setTimeout(spinInterval, 10);
 }
 
 
 function slowRotation() {
+  logo.classList.add('ready');
   if(!goTo) {
     if (rotationNum > 0) {
       goTo = Math.ceil(rotationNum/360) * 360;
@@ -48,15 +65,16 @@ function slowRotation() {
     }
   }
   if (rotationNum != goTo) {
-    var change = (goTo - rotationNum) * 0.05;
+    var change = (goTo - rotationNum) * 0.040;
     rotationNum += change;
     if (rotationNum >= (goTo - 1)) {
       setTimeout(function() {
-        logo.classList.add('above');
+        // logo.classList.add('above');
       }, 1000);
       setTimeout(function() {
+        doFlicker = false;
         if (callback) callback();
-      }, 2000);
+      }, 1500);
     } else {
       spin.style['transform'] = "rotate("+rotationNum+"deg)";
       setTimeout(slowRotation, 10);
@@ -70,6 +88,7 @@ function revealLoaded() {
   loadingEl.classList.add('hidden-text');
   setTimeout(function() {
     luarEl.classList.remove('hidden-text');
+    // addLetters(luarArr, luarEl);
   }, 1000);
   slowRotation();
 }

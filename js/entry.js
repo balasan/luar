@@ -6,11 +6,14 @@ require('./../css/font.css');
 
 document.addEventListener('DOMContentLoaded', function() {
 
-  var Loader = require('./loader');
+  var Loader = require('./src/loader');
   var glView = new GlView();
+  var logo = document.getElementById('logo');
+  var main = document.getElementById('main');
+  glView.init();
 
   Loader.init(() => {
-    glView.init();
+    glView.animate();
     logo.classList.add('above');
     main.classList.remove('below');
   });
@@ -23,8 +26,4 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('touchstart', () => {
     audio.play();
   })
-
-  var logo = document.getElementById("logo");
-  var main = document.getElementById("main");
-
 })

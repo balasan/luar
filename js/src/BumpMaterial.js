@@ -11,7 +11,7 @@ var mobilecheck = function() {
 };
 
 
-function BumpMaterial(options){
+function BumpMaterial(options) {
 
     var customShaders = new CustomShaders();
     var customShaders2 = new CustomShaders();
@@ -33,32 +33,36 @@ function BumpMaterial(options){
 
 
     var slides = [];
-    for (var i = 0; i < 16; i++) {
+    for (var i = 0; i < 18; i++) {
         var index = i + 1;
         var slide = new Slide({
-            url: '/img/' + index + '.jpg'
+            url: '/img/' + index + '.jpg',
+            callback: slide => slides.push(slide)
         });
-        slides.push(slide);
     }
     for (var i = 0; i < 16; i++ ) {
         var slide = new Slide({
             url: '/img/logo-black.jpg',
-            black: true
+            black: true,
+            callback: slide => slides.push(slide)
         });
-        slides.push(slide);
+        // slides.push(slide);
     }
 
     if (!mobilecheck()) {
         var slide = new Slide({
             url: "/img/LUAR28.mp4",
             video: true,
-            texture: this.video
+            texture: this.video,
+            callback: slide => slides.push(slide)
+
         })
-        slides.push(slide);
+        // slides.push(slide);
         var slide = new Slide({
             url: "/img/LUAR12.mp4",
             video: true,
-            texture: this.video
+            texture: this.video,
+            callback: slide => slides.push(slide)
         })
         slides.push(slide);
     }
@@ -68,65 +72,22 @@ function BumpMaterial(options){
     currentSlide.show();
     this.texture = currentSlide.texture;
 
-
-
     this.mesh;
-
-    // fbTexture = tLoader.load("/img/DERMA-LOGO-LUAR.jpg");
     this.logo = tLoader.load("img/logo-bump.jpg");
     this.logo.wrapS = this.logo.wrapT = THREE.RepeatWrapping;
-    // this.logo.magFilter = 
     this.logo.minFilter = THREE.LinearMipMapNearestFilter;
 
     this.fbos = [];
     this.init = function() {
-
-        // this.fbos[0] = new FeedbackObject(customShaders.bumpBumpShader);
-        // this.fbos[0].material.uniforms.texture2.value = this.texture;
-        // this.fbos[0].material.uniforms.texture.value = this.logo;
 
         this.fbos[0] = new FeedbackObject(customShaders.edgeShader);
         this.fbos[0].material.uniforms.texture.value = this.texture;
         this.fbos[0].material.uniforms.bump.value = this.logo;
         this.fbos[0].material.uniforms.aspect.value = currentSlide.a;
 
-
-        // this.fbos[1] = new FeedbackObject(customShaders.blurShader);
-        // this.fbos[1].material.uniforms.texture.value = this.fbos[0].renderTarget;
-
-
-        // this.frameDiff = new FeedbackObject(customShaders.diffShader);
-        // this.frameDiff.material.uniforms.texture.value  = this.fbos[0].renderTarget;
-        // this.frameDiff.material.uniforms.texture2.value = this.fbos[1].renderTarget;
-        // this.frameDiff.material.uniforms.texture3.value = this.texture;
-        // this.fbos[2] = this.frameDiff;
-
-
-        // this.fbos[3] = new FeedbackObject(customShaders2.colorShader);
-        // this.fbos[3].material.uniforms.texture.value = this.frameDiff.renderTarget;
-        // this.swap = this.fbos[3];
-
-
-        // this.fbos[4] = new FeedbackObject(customShaders2.blurShader);
-        // this.fbos[4].material.uniforms.texture.value = this.fbos[3].renderTarget;
-
-
-        // this.fbo4 = new FeedbackObject(customShaders.bumpBumpShader);
-        // this.fbo4.material.uniforms.texture.value = this.fbos[4].renderTarget;
-        // this.fbo4.material.uniforms.texture2.value = this.video;
-        // this.fbo4.material.uniforms["lightBrightness"].value = 1.0;
-
-
-        // this.fbo4.material.uniforms["mouse"].value = new THREE.Vector2(window.innerWidth, 0);
-        // this.fbo4.material.uniforms["resolution"].value = new THREE.Vector2(window.innerWidth, window.innerHeight);
-        // this.fbos[5]=this.fbo4;
-
-
         for(var i = 0; i < this.fbos.length; i++){
           this.fbos[i].material.uniforms.resolution.value = new THREE.Vector2(window.innerWidth, window.innerHeight);
         }
-
-        // this.fbos[0].material.uniforms.texture.value = this.frameDiff.renderTarget; 
 
         this.material = new THREE.ShaderMaterial({
             uniforms: this.outputShader.uniforms,
@@ -183,11 +144,6 @@ function BumpMaterial(options){
         }
         this.material.uniforms.mouse.value = new THREE.Vector2(window.innerWidth, 0);
 
-        // this.fbos[5].material.uniforms.mouse.value = new THREE.Vector2(
-        //     window.innerWidth * ( 0+.5 ), window.innerWidth * (.5 + .5)
-        // );
-
-
         if (currentSlide.expired()) {
             currentSlide = slides[Math.floor(Math.random() * slides.length)];
             currentSlide.show();
@@ -199,15 +155,9 @@ function BumpMaterial(options){
             this.texture.needsUpdate = true;
         this.update();
 
-        // if(this.expand){
-        // this.expand(1.002);
-        // }
-
         this.getNewFrame();
         this.renderer.render(this.scene, this.camera);
 
-        // this.swapBuffers();
-        // capturer.capture( fbRenderer.domElement );
     }
 }
 

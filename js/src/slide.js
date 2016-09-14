@@ -16,6 +16,9 @@ function Slide(options) {
     this.texture.minFilter = THREE.LinearFilter;
     this.texture.magFilter = THREE.LinearFilter;
     this.a = 16 / 9;
+    this.video.oncanplay = () => {
+      if (options.callback) options.callback(this);
+    }
   }
   else {
     this.loader = new THREE.TextureLoader();
@@ -23,6 +26,7 @@ function Slide(options) {
       this.w = this.texture.image.width;
       this.h = this.texture.image.height;
       this.a = this.w / this.h;
+      if (options.callback) options.callback(this);
     });
   }
 
@@ -33,7 +37,7 @@ Slide.prototype.show = function() {
   this.startTime = now.getTime();
 
   var r = Math.random();
-  if (r > .95)
+  if (r > .95 || this.video && r > .8)
     this.time = r * 2000;
   else
     this.time = Math.random() * 80;

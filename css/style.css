@@ -22,7 +22,7 @@ body {
   margin: 0;
   width: 100%;
   font-family: 'goth';
-  transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  // transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .text-parent {
@@ -42,6 +42,7 @@ body {
 #luar {
   font-size: 48px;
   margin: -20px 0 0 0;
+  transition: opacity .6s easeInOutBack;
 }
 
 .hidden-text {
@@ -92,6 +93,15 @@ section {
   height: 50vh;
 }
 
+#logo {
+  transform: scale(.6);
+}
+
+#logo.ready {
+  transform: scale(1);
+  transition: transform .6s easeInOutBack;
+}
+
 #main {
   width: 100vw;
   height: 100vh;
@@ -101,16 +111,16 @@ article {
   position: absolute;
   top: 30px;
   display: flex;
-  right: 0;
+  right: 30px;
   padding: 1vw;
 }
 
 article p {
-  margin: 0 30px;
-  font-size: 30px;
+  margin: 0 10px;
+  font-size: 25px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
   article {
     flex-direction: column;
     top: 5px;
