@@ -1,4 +1,4 @@
-# liquid-video  
+# Luar
 
 run app locally:  
 install node and npm  
@@ -19,6 +19,3 @@ build for production:
 ```
 npm run build
 ```
-
-TODO:  
-build minified code w no source maps
