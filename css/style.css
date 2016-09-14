@@ -69,13 +69,11 @@ section {
 .above {
  opacity: 0;
  transition: transform 800ms cubic-bezier(0.165, 0.84, 0.44, 1), opacity 800ms cubic-bezier(0.165, 0.84, 0.44, 1);
-/* transform: translateZ(1000px);*/
  pointer-events: none;
 }
 
 .below {
   opacity: 0;
-/*  transform: translateZ(-1000px);*/
   pointer-events: none;
 }
 
