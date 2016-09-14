@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   Loader.init(() => {
     glView.init();
-    logo.classList = 'above';
-    main.classList = '';
+    logo.classList.add('above');
+    main.classList.remove('below');
   });
 
   var audio = new Audio();

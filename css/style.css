@@ -123,7 +123,7 @@ article {
   position: absolute;
   top: 30px;
   display: flex;
-  // flex-direction: column;
+/*  flex-direction: column;*/
   right: 0;
   padding: 1vw;
 }
