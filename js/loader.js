@@ -9,7 +9,6 @@ var toAdd = 0;
 var started = false;
 var rotationNum = 0;
 var goTo = null;
-Draggable.create(".window-parent", {type:"x,y", edgeResistance:0.65, bounds:"#main", throwProps:true});
 var spin = document.getElementById("spin");
 var callback;
 

@@ -97,33 +97,10 @@ section {
   height: 100vh;
 }
 
-.hidden {
-  transform: scale(0) skew(20deg,10deg) !important;
-  pointer-events: none;
-}
-
-.window-parent {
-  display: inline-block;
-  position: absolute;
-}
-
-.window {
-  position: absolute;
-  transform: scale(1) skew(0deg,0deg);
-  transition: all 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
-  background-color: white;
-  max-height: 35vh;
-  object-fit: contain;
-  -webkit-box-shadow: 10px 10px 29px -13px rgba(0,0,0,0.75);
-  -moz-box-shadow: 10px 10px 29px -13px rgba(0,0,0,0.75);
-  box-shadow: 10px 10px 29px -13px rgba(0,0,0,0.75);
-}
-
 article {
   position: absolute;
   top: 30px;
   display: flex;
-/*  flex-direction: column;*/
   right: 0;
   padding: 1vw;
 }
@@ -139,7 +116,7 @@ article p {
     flex-direction: column;
     top: 5px;
   }
-  article p{
+  article p {
     margin: 5px 10px;
     font-size: 20px;
   }
@@ -155,19 +132,6 @@ a:hover {
   text-decoration: underline;
 }
 
-.shadow {
-  opacity: 0;
-  max-height: 35vh;
-  object-fit: contain;
-}
-
-video.bg {
-  height: 100vh;
-  width: 100vw;
-  top: 0;
-  left: 0;
-  background-color: white;
-}
 
 
 
