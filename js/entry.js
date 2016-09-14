@@ -7,7 +7,6 @@ require('./../css/font.css');
 document.addEventListener('DOMContentLoaded', function() {
 
   var Loader = require('./loader');
-  // var Windows = require('./windows');
   var glView = new GlView();
 
   Loader.init(() => {
