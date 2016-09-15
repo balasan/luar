@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
   var glView = new GlView();
   var logo = document.getElementById('logo');
   var main = document.getElementById('main');
-  glView.init();
 
   Loader.init(() => {
+    glView.init();
     glView.animate();
     logo.classList.add('above');
     main.classList.remove('below');
