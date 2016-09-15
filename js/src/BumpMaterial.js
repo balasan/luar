@@ -112,6 +112,16 @@ function BumpMaterial(options) {
         }
         this.material.uniforms["resolution"].value = new THREE.Vector2(w,h);
 
+        // notify the renderer of the size change
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        // update the camera
+        // var camFactor = 2.0;
+        // this.camera.left = -window.innerWidth / camFactor;
+        // this.camera.right = window.innerWidth / camFactor;
+        // this.camera.top = window.innerHeight / camFactor;
+        // this.camera.bottom = -window.innerHeight / camFactor;
+        // this.camera.updateProjectionMatrix();
+
     }
 
     this.update = function(){

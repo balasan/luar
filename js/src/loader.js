@@ -47,7 +47,7 @@ function init(_callback) {
 
 
 function spinInterval() {
-  rotationNum += 8;
+  rotationNum += 7;
   spin.style['transform'] = "rotate("+rotationNum+"deg)";
   if (!loaded) setTimeout(spinInterval, 10);
 }
@@ -65,9 +65,11 @@ function slowRotation() {
     }
   }
   if (rotationNum != goTo) {
-    var change = (goTo - rotationNum) * 0.040;
+    var change = Math.min((goTo - rotationNum) * 0.05, 7);
     rotationNum += change;
-    if (rotationNum >= (goTo - 1)) {
+    if (Math.abs(rotationNum - goTo) < 1) {
+      // rotationNum  = goTo;
+      spin.style['transform'] = "rotate("+rotationNum+"deg)";
       setTimeout(function() {
         // logo.classList.add('above');
       }, 1000);

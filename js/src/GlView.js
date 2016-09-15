@@ -65,7 +65,7 @@ var GlView = function() {
   function resize() {
     var w = window.innerWidth;
     var h = window.innerHeight;
-    fbMaterial.resize(w,h);
+    fbMaterial.resize(w, h);
   }
 
   this.animate = () => {
