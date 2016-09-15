@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --inline --hot",
-    "build": "webpack --progress --colors"
+    "build": "webpack --config ./webpack.config.production.js --progress --colors"
   },
   "dependencies": {
     "glsl-combine-smooth": "^1.0.0",
