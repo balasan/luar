@@ -40,13 +40,13 @@ function BumpMaterial(options) {
             callback: slide => slides.push(slide)
         });
     }
-    for (var i = 0; i < 16; i++ ) {
+    for (var i = 0; i < 18; i++ ) {
         var slide = new Slide({
             url: '/img/logo-black.jpg',
             black: true,
-            callback: slide => slides.push(slide)
+            // callback: slide => slides.push(slide)
         });
-        // slides.push(slide);
+        slides.push(slide);
     }
 
     if (!mobilecheck()) {
@@ -55,20 +55,18 @@ function BumpMaterial(options) {
             video: true,
             texture: this.video,
             callback: slide => slides.push(slide)
-
         })
-        // slides.push(slide);
         var slide = new Slide({
             url: "/img/LUAR12.mp4",
             video: true,
             texture: this.video,
             callback: slide => slides.push(slide)
         })
-        slides.push(slide);
     }
 
 
     var currentSlide = slides[Math.floor(Math.random() * slides.length)];
+    if (!currentSlide) currentSlide = {};
     currentSlide.show();
     this.texture = currentSlide.texture;
 
