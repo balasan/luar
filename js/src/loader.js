@@ -47,9 +47,10 @@ function init(_callback) {
 
 
 function spinInterval() {
+  if (loaded) return;
   rotationNum += 7;
   spin.style['transform'] = "rotate("+rotationNum+"deg)";
-  if (!loaded) setTimeout(spinInterval, 10);
+  setTimeout(spinInterval, 10);
 }
 
 
