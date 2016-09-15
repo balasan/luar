@@ -21,7 +21,7 @@ function addLetters(array, el) {
   }
   else {
     toAdd = 0;
-    flicker();
+    // flicker();
   }
 }
 
