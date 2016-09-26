@@ -40,8 +40,13 @@ var GlView = function() {
     var tLoader = new THREE.TextureLoader();
     fbTexture = tLoader.load("img/logo-black.jpg");
 
-    renderer = new THREE.WebGLRenderer({ preserveDrawingBuffer: false/*, alpha: true*/});
-    // renderer.setPixelRatio( window.devicePixelRatio );
+    try {
+      renderer = new THREE.WebGLRenderer({ preserveDrawingBuffer: false/*, alpha: true*/});
+      // renderer.setPixelRatio( window.devicePixelRatio );
+    }
+    catch(err) {
+      return false;
+    }
     renderer.setClearColor(0xffffff, 1.0);
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);

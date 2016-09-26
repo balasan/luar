@@ -10,11 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
   var glView = new GlView();
   var logo = document.getElementById('logo');
   var main = document.getElementById('main');
+  var glViewOk;
 
   Loader.init(() => {
-    glView.init();
-    glView.animate();
-    logo.classList.add('above');
+    glViewOk = glView.init();
+    if (glViewOk) {
+      glView.animate();
+      logo.classList.add('above');
+    }
     main.classList.remove('below');
   });
 

@@ -50,6 +50,8 @@ function spinInterval() {
   if (loaded) return;
   rotationNum += 7;
   spin.style['transform'] = "rotate("+rotationNum+"deg)";
+  spin.style['webkitTransform'] = "rotate("+rotationNum+"deg)";
+  spin.style['mozTransform'] = "rotate("+rotationNum+"deg)";
   setTimeout(spinInterval, 10);
 }
 
@@ -80,6 +82,8 @@ function slowRotation() {
       }, 1500);
     } else {
       spin.style['transform'] = "rotate("+rotationNum+"deg)";
+      spin.style['webkitTransform'] = "rotate("+rotationNum+"deg)";
+      spin.style['mozTransform'] = "rotate("+rotationNum+"deg)";
       setTimeout(slowRotation, 10);
     }
   }
