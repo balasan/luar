@@ -65,6 +65,8 @@ var GlView = function() {
     window.addEventListener( 'resize', resize, false);
 
     resize();
+
+    return true;
   }
 
   function resize() {
